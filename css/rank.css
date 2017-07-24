@@ -1,0 +1,39 @@
+#out{
+	width: 1040px;
+	margin: 50px auto;
+}
+#top{
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
+#top a{
+	display: inline-block;
+}
+#top span{
+	display: inline-block;
+	width: 80px;
+	height: 40px;
+	font: 20px/40px "微软雅黑";
+	color: #fff;
+	background: red;
+}
+ul{
+	width: 100%;
+	padding: 0;
+	margin: 30px 0;
+	list-style: none;
+	position: relative;
+}
+li{
+	float: left;
+	margin: 0 10px 20px 10px;
+	position: absolute;
+}
+p{
+	margin: 0;
+	text-align: center;
+}
+img{
+	width: 240px;
+}

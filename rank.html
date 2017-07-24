@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/rank.css"/>
+	</head>
+	<body>
+		<div id="out">
+			<div id="top">
+				<a href="#" style="margin-right: 10px;"><span id="rank">从大到小</span></a>
+				<a href="#" style="margin-left: 10px;"><span id="random">打乱顺序</span></a>
+			</div>
+			<ul>
+				<li><img src="img/263.jpg"/><p>1-263</p></li>
+				<li><img src="img/268.jpg"/><p>2-268</p></li>
+				<li><img src="img/AMX-50B.jpg"/><p>3-AMX-50B</p></li>
+				<li><img src="img/E50M.jpg"/><p>4-E50M</p></li>
+				<li><img src="img/FV215b.jpg"/><p>5-FV215b</p></li>
+				<li><img src="img/HEAVY-5.jpg"/><p>6-HEAVY-5</p></li>
+				<li><img src="img/IS-4.jpg"/><p>7-IS-4</p></li>
+				<li><img src="img/T92.jpg"/><p>8-T92</p></li>
+			</ul>
+		</div>
+		<script src="js/move.js"></script>
+		<script>
+			var posi=[
+				{"left":'0',"top":'0',"index":'1'},
+				{"left":'260',"top":'0',"index":'2'},
+				{"left":'520',"top":'0',"index":'3'},
+				{"left":'780',"top":'0',"index":'4'},
+				{"left":'0',"top":'195',"index":'5'},
+				{"left":'260',"top":'195',"index":'6'},
+				{"left":'520',"top":'195',"index":'7'},
+				{"left":'780',"top":'195',"index":'8'}
+			];
+			var rank=document.getElementById("rank");
+			var random=document.getElementById("random");
+			var ul=document.querySelector("ul");
+			var lis=document.querySelectorAll("li");
+			
+			for(i=0;i<8;i++){
+				lis[i].style.left=posi[i].left+'px';
+				lis[i].style.top=posi[i].top+'px';
+			}
+			
+		
+			//从大到小&从小到大
+			var order=1;
+			rank.onclick=function(){
+				
+				console.log(lis[0].innerHTML);
+				if(order==1){
+					posi.sort(function(a,b){
+						return b.index-a.index;
+					})
+					for(i=0;i<8;i++){
+						move(lis[i],{left:posi[i].left,top:posi[i].top},700,'linear');
+					}
+					order=-1;
+					rank.innerHTML='从小到大';
+				}else{
+					posi.sort(function(a,b){
+						return a.index-b.index;
+					})
+					for(i=0;i<8;i++){
+						move(lis[i],{left:posi[i].left,top:posi[i].top},700,'linear');
+					}
+					order=1;
+					rank.innerHTML='从大到小';
+				}
+			}
+
+			//打乱顺序
+			random.onclick=function(){
+				posi.sort(function(){
+					return 0.5-Math.random();
+				});
+
+				for(i=0;i<8;i++){
+					move(lis[i],{left:posi[i].left,top:posi[i].top},700,'linear');
+				}
+			}
+		</script>
+	</body>
+</html>
